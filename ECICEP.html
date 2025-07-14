@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe: Estrategia de Cuidado Integral Centrado en la Persona (ECICEP)</title>
+    <!-- Google Fonts: Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base styles */
+        html {
+            scroll-behavior: smooth; /* Smooth scroll for anchor links */
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8fafc; /* Very light blue-gray for a clean base */
+            color: #334155; /* Dark slate gray for main text */
+            line-height: 1.6; /* Improved line height for readability */
+        }
+
+        /* Headings hierarchy */
+        h1, h2, h3, h4 {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700; /* Bold by default for headings */
+            color: #1a202c; /* Darker heading color */
+        }
+        h1 { font-size: 3.5rem; line-height: 1.1; } /* Larger, impactful H1 */
+        h2 { font-size: 2.5rem; line-height: 1.2; }
+        h3 { font-size: 2rem; line-height: 1.3; }
+        h4 { font-size: 1.6rem; line-height: 1.4; }
+        h5 { font-size: 1.25rem; line-height: 1.5; }
+        h6 { font-size: 1rem; line-height: 1.5; }
+
+        /* General element styling */
+        .rounded-xl {
+            border-radius: 1.5rem; /* Consistent large rounded corners */
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0; /* Light gray border */
+            position: relative;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100px; /* Slightly longer accent line */
+            height: 4px;
+            background: linear-gradient(to right, #1e3a8a, #3b82f6); /* Darker blue gradient */
+            border-radius: 2px;
+        }
+        .icon-lg {
+            width: 3.5rem;
+            height: 3.5rem;
+            margin-right: 1.5rem;
+            color: #1e3a8a; /* Deep blue icon color */
+            background-color: #e0f2fe; /* Very light blue background for icon */
+            padding: 0.75rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        .card {
+            background-color: #f0f9ff; /* Lighter blue background, applied to all cards */
+            border: 1px solid #bfdbfe; /* Light blue border, applied to all cards */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* Slightly more prominent shadow, applied to all cards */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-radius: 1rem;
+            padding: 2.5rem; /* More generous padding */
+            display: flex; /* Use flexbox for card content */
+            flex-direction: column; /* Stack content vertically */
+            justify-content: flex-start; /* Align content to the start */
+            height: 100%; /* Ensure cards take full height in grid to align bottoms */
+            cursor: pointer; /* Indicate clickable area */
+        }
+        .card:hover {
+            transform: translateY(-10px); /* More lift on hover, applied to all cards */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover, applied to all cards */
+        }
+        .card h5 {
+            display: flex; /* Keep flex for emoji alignment */
+            align-items: center; /* Vertically center emoji with text */
+            gap: 0.75rem; /* Space between emoji and text */
+            font-size: 1.4rem; /* Larger title */
+            margin-bottom: 0.25rem; /* Reduced margin for tighter spacing */
+            white-space: normal; /* Ensure text wraps naturally */
+            flex-wrap: wrap; /* Allow emoji and text to wrap if needed */
+        }
+        .card h5 .emoji {
+            font-size: 2.2rem; /* Larger emoji */
+            line-height: 1; /* Ensure emoji sits well with text */
+            flex-shrink: 0; /* Prevent emoji from shrinking */
+        }
+        .card h5 .card-title-text {
+            flex-grow: 1; /* Allow text to take available space */
+            min-width: 0; /* Allow it to shrink below content size if necessary */
+        }
+
+        /* Specific color overrides for Estratificación cards - for text color, not emoji */
+        .card h5.text-green-700 { color: #15803d; } /* Darker green for text */
+        .card h5.text-yellow-800 { color: #92400e; } /* Darker yellow/orange for text */
+        .card h5.text-orange-800 { color: #9a3412; } /* Darker orange for text */
+        .card h5.text-red-800 { color: #991b1b; } /* Darker red for text */
+
+        .card p {
+            font-size: 1rem; /* Slightly larger paragraph text */
+            color: #475569; /* Slightly darker gray for readability */
+            word-wrap: break-word; /* Ensure long words break and wrap */
+            overflow-wrap: break-word; /* Modern property for word breaking */
+            white-space: normal; /* Ensure text wraps naturally */
+        }
+
+        .callout-info {
+            background-color: #e0f7fa; /* Light cyan for info callout */
+            border-left: 6px solid #00796b; /* Dark teal border */
+            color: #004d40; /* Dark teal text */
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin: 2.5rem 0;
+            font-weight: 500;
+            line-height: 1.7;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .list-item-icon {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        .list-item-icon svg {
+            flex-shrink: 0;
+            width: 1.4rem; /* Slightly larger icons in lists */
+            height: 1.4rem;
+            margin-right: 0.8rem;
+            color: #10b981; /* Green checkmark */
+        }
+        .process-step {
+            background-color: #ffffff;
+            border: 1px solid #e0e7ff;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem; /* More space between steps */
+            display: flex;
+            flex-direction: column; /* Stack content vertically */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            cursor: pointer; /* Indicate clickable area */
+        }
+        .process-step-header-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.8rem; /* Space between number and text */
+            margin-bottom: 0.25rem; /* Space between header and content */
+        }
+        .process-step-number {
+            font-size: 2.5rem; /* Larger, more prominent numbers */
+            font-weight: 800;
+            color: #1e3a8a; /* Deep blue number */
+            line-height: 1;
+            background-color: #e0f2fe;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem; /* More rounded number background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0; /* Prevent number from shrinking */
+        }
+        .process-step h4 {
+            display: flex; /* Make h4 a flex container */
+            align-items: center; /* Vertically align emoji and text */
+            gap: 0.75rem; /* Space between emoji and text */
+            margin: 0; /* Reset margin for h4 within flex */
+            white-space: normal; /* Ensure text wraps naturally */
+            flex-wrap: wrap; /* Allow emoji and text to wrap if needed */
+        }
+        .process-step h4 .emoji {
+            font-size: 1.8rem; /* Size for the new emojis */
+            line-height: 1;
+            flex-shrink: 0; /* Prevent emoji from shrinking */
+        }
+        .process-step h4 .process-step-title-text {
+            flex-grow: 1; /* Allow text to take available space */
+            min-width: 0; /* Allow it to shrink below content size if necessary */
+        }
+
+        /* Collapsible Content Styling */
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* Smooth transition for height and padding */
+            padding-top: 0; /* Initial padding */
+        }
+        .collapsible-content.expanded {
+            max-height: 1000px; /* Sufficiently large value to show all content */
+            padding-top: 0.5rem; /* Add padding when expanded */
+        }
+
+        .stage-box {
+            background-color: #f0f4f8; /* Lighter background for stages */
+            border: 1px solid #d1d5db;
+            padding: 1.8rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .stage-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+        .stage-box h5 {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.15rem;
+            word-break: break-word; /* Ensure long words break */
+            overflow-wrap: break-word; /* Ensure long words break */
+            white-space: normal; /* Ensure text wraps naturally */
+        }
+        .stage-box p {
+            font-size: 0.95rem;
+            color: #4b5563;
+            word-wrap: break-word; /* Ensure long words break and wrap */
+            overflow-wrap: break-word; /* Modern property for word breaking */
+            white-space: normal; /* Ensure text wraps naturally */
+        }
+
+        /* Improved Navigation Bar Styling */
+        .non-fixed-nav {
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Stronger shadow */
+            padding: 1.5rem 0; /* More padding */
+            border-radius: 1rem; /* Rounded corners for the nav bar itself */
+            margin-bottom: 3rem; /* More space below the nav */
+            border: 1px solid #e2e8f0; /* Light border */
+        }
+        .non-fixed-nav ul {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            justify-content: center;
+            gap: 0.75rem; /* Reduced gap for better fit on small screens */
+            list-style: none;
+            padding: 0 1rem; /* Horizontal padding for list */
+            margin: 0;
+        }
+        .non-fixed-nav a {
+            color: #334155;
+            font-weight: 600;
+            padding: 0.75rem 1.25rem; /* More padding for button-like feel */
+            border-radius: 0.75rem; /* More rounded buttons */
+            transition: all 0.3s ease-in-out; /* Smoother transitions */
+            text-decoration: none;
+            flex-shrink: 0; /* Prevent items from shrinking too much */
+            white-space: nowrap; /* Keep text on one line */
+            border: 1px solid transparent; /* Transparent border for consistent sizing */
+        }
+        .non-fixed-nav a:hover {
+            background-color: #e0f2fe; /* Light blue background */
+            color: #1e3a8a; /* Dark blue text */
+            border-color: #93c5fd; /* Light blue border on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Subtle shadow on hover */
+        }
+        .non-fixed-nav a.active {
+            background-color: #1e3a8a; /* Dark blue background for active */
+            color: #ffffff; /* White text for active */
+            border-color: #1e3a8a; /* Dark blue border for active */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow for active */
+        }
+
+        /* Responsive adjustments for overall container */
+        .main-container {
+            padding: 3rem; /* Base padding */
+        }
+        @media (min-width: 640px) { /* sm */
+            .main-container {
+                padding: 4rem;
+            }
+            .non-fixed-nav ul {
+                gap: 1rem; /* Slightly larger gap on small screens */
+            }
+        }
+        @media (min-width: 768px) { /* md */
+            .main-container {
+                padding: 5rem;
+            }
+            h1 { font-size: 4.5rem; }
+            h2 { font-size: 3rem; }
+            .non-fixed-nav ul {
+                gap: 1.5rem; /* Standard gap on medium screens */
+            }
+        }
+        @media (min-width: 1024px) { /* lg */
+            .main-container {
+                padding: 6rem;
+            }
+            h1 { font-size: 5.5rem; }
+            h2 { font-size: 3.5rem; }
+            .non-fixed-nav ul {
+                gap: 2rem; /* Larger gap on large screens */
+            }
+        }
+
+        /* Specific adjustments for very small screens to prevent word breaks in titles */
+        @media (max-width: 639px) { /* For screens smaller than sm (640px) */
+            .card h5 {
+                font-size: 1.2rem; /* Slightly smaller title font for very small screens */
+            }
+            .card h5 .emoji {
+                font-size: 1.8rem; /* Adjust emoji size proportionally */
+            }
+            .process-step h4 {
+                font-size: 1.3rem; /* Slightly smaller title font for very small screens */
+            }
+            .process-step h4 .emoji {
+                font-size: 1.6rem; /* Adjust emoji size proportionally */
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8 md:p-12 lg:p-16">
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-xl main-container border border-blue-100">
+
+        <!-- Header Section -->
+        <header class="mb-16 text-center">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-blue-900 mb-6 leading-tight">
+                Estrategia de Cuidado Integral Centrado en la Persona (ECICEP)
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-700 mt-4 max-w-3xl mx-auto">
+                Un análisis profundo y cohesivo de los documentos clave del Ministerio de Salud de Chile para una atención sanitaria transformadora.
+            </p>
+            <p class="text-base text-gray-600 mt-8 italic">
+                Este informe integra la visión estratégica, el marco operativo y la implementación práctica de la ECICEP, destacando el rol fundamental de los Navegadores en Red.
+            </p>
+        </header>
+
+        <!-- Navigation Bar (now scrolls with content) -->
+        <nav class="non-fixed-nav">
+            <ul>
+                <li><a href="#introduccion" class="text-gray-700 hover:text-blue-900">Introducción</a></li>
+                <li><a href="#marco-estrategico" class="text-gray-700 hover:text-blue-900">Marco Estratégico</a></li>
+                <li><a href="#marco-operativo" class="text-gray-700 hover:text-blue-900">Marco Operativo</a></li>
+                <li><a href="#estratificacion" class="text-gray-700 hover:text-blue-900">Estratificación</a></li>
+                <li><a href="#proceso-atencion" class="text-gray-700 hover:text-blue-900">Proceso de Atención</a></li>
+                <li><a href="#equipo-salud" class="text-gray-700 hover:text-blue-900">Equipo de Salud</a></li>
+                <li><a href="#automanejo" class="text-gray-700 hover:text-blue-900">Automanejo</a></li>
+                <li><a href="#gobernanza" class="text-gray-700 hover:text-blue-900">Gobernanza y Gestión</a></li>
+                <li><a href="#evaluacion" class="text-gray-700 hover:text-blue-900">Evaluación</a></li>
+                <li><a href="#implementacion-navegadores" class="text-gray-700 hover:text-blue-900">Navegadores en Red</a></li>
+                <li><a href="#conclusion" class="text-gray-700 hover:text-blue-900">Conclusión</a></li>
+            </ul>
+        </nav>
+
+        <!-- Introduction Section -->
+        <section id="introduccion" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm0 8.625a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM15.375 12a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM8.625 12a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">1. Introducción: Hacia un Nuevo Paradigma de Salud en Chile</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                La salud pública en Chile, al igual que en muchas otras naciones, enfrenta desafíos significativos derivados del envejecimiento poblacional y la creciente prevalencia de enfermedades crónicas y multimorbilidad. Ante este panorama, el Ministerio de Salud ha impulsado la Estrategia de Cuidado Integral Centrado en la Persona (ECICEP), una iniciativa diseñada para reorientar el sistema de atención sanitaria. Este informe se construye sobre la base de tres documentos ministeriales clave, tejiendo una narrativa coherente que va desde la fundamentación estratégica hasta la implementación operativa en la red asistencial.
+            </p>
+            <div class="callout-info">
+                <p class="font-semibold">
+                    <span class="font-bold text-blue-900">Propósito del Informe:</span> Desglosar la ECICEP, sus objetivos y su implementación, destacando cómo cada componente contribuye a una atención más humana, coordinada y eficiente para los ciudadanos chilenos.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Strategic and Conceptual Framework -->
+        <section id="marco-estrategico" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">2. Marco Estratégico y Conceptual: La Visión de Cuidado Integral (Documento 2020)</h3>
+            </div>
+            <div class="card p-6 rounded-lg mb-6">
+                <h4 class="text-2xl font-semibold text-gray-800 mb-4">Contexto y Transformación Necesaria</h4>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                    La "Estrategia de cuidado integral centrado en las personas en contexto de multimorbilidad" (2020) establece la piedra angular de la ECICEP. Reconoce que el modelo de atención tradicional, a menudo reactivo y enfocado en patologías individuales, es insuficiente para las complejidades actuales de salud. La estrategia propone una transformación fundamental hacia un sistema que:
+                </p>
+                <ul class="list-none space-y-3">
+                    <li class="list-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-gray-700">Se centre en la <strong>persona como un todo</strong>, no solo en su enfermedad, considerando sus dimensiones biopsicosociales y culturales.</span>
+                    </li>
+                    <li class="list-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-gray-700">Adopte un enfoque <strong>proactivo</strong>, con énfasis en la promoción de la salud y la prevención de enfermedades, en lugar de solo la reacción a la patología.</span>
+                    </li>
+                    <li class="list-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-gray-700">Promueva la <strong>continuidad del cuidado</strong> a lo largo de todo el curso de vida, desde la niñez hasta la vejez.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-gray-800 mb-4">Pilares Estratégicos Fundamentales:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card p-6 rounded-lg text-center" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-lg text-blue-700">
+                        <span class="emoji">🌍</span>
+                        <span class="card-title-text">Enfoque Holístico</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-sm text-gray-600">Comprender al individuo en su totalidad, incluyendo su entorno familiar y social.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg text-center" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-lg text-blue-700">
+                        <span class="emoji">⏳</span>
+                        <span class="card-title-text">Gestión del Cuidado en el Curso de Vida</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-sm text-gray-600">Atención continua desde la promoción hasta la rehabilitación, adaptada a cada etapa de la vida.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg text-center" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-lg text-blue-700">
+                        <span class="emoji">💪</span>
+                        <span class="card-title-text">Empoderamiento del Paciente</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-sm text-gray-600">Fomento del autocuidado y la participación activa de la persona y su familia.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg text-center" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-lg text-blue-700">
+                        <span class="emoji">⚡</span>
+                        <span class="card-title-text">Eficiencia en la Gestión</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-sm text-gray-600">Optimización de recursos para una atención de calidad y oportuna.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mt-6">
+                La ECICEP se alinea con el <strong class="text-blue-700">Modelo de Atención Integral de Salud Familiar y Comunitario (MAIS)</strong>, buscando una integración completa de los servicios de salud y una respuesta más efectiva a las necesidades de la población.
+            </p>
+        </section>
+
+        <!-- Section 3: Operational Framework -->
+        <section id="marco-operativo" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M19.5 21a.75.75 0 00.75-.75V5.625a.75.75 0 00-1.5 0v14.625a.75.75 0 00.75.75zM12 21a.75.75 0 00.75-.75V3.375a.75.75 0 00-1.5 0v16.875a.75.75 0 00.75.75zM4.5 21a.75.75 0 00.75-.75V9.375a.75.75 0 00-1.5 0v10.875a.75.75 0 00.75.75z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">3. Marco Operativo y de Gestión (Documento 2025): De la Estrategia a la Acción</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                El "Marco Operativo Estrategia Cuidado Integral Centrado en la Persona ECICEP 2025" es la hoja de ruta que traduce la visión estratégica en acciones concretas. Este documento, una actualización clave para 2025, detalla los mecanismos y procesos necesarios para la implementación efectiva de la ECICEP en todos los niveles de la red asistencial.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-gray-800 mb-4">Componentes Clave del Marco Operativo:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🏛️</span>
+                        <span class="card-title-text">Gobernanza de la Estrategia</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 mb-3">Establece una estructura de liderazgo y coordinación multinivel para asegurar la coherencia y el avance de la ECICEP. Esto incluye:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-600 space-y-1">
+                            <li>Coordinación a nivel <strong class="text-blue-600">nacional</strong> (Ministerio).</li>
+                            <li>Implementación a nivel <strong class="text-blue-600">regional</strong> (Servicios de Salud).</li>
+                            <li>Operación a nivel <strong class="text-blue-600">local</strong> (Establecimientos de salud).</li>
+                            <li>Fomento de la <strong class="text-blue-600">coordinación intersectorial</strong> para abordar determinantes sociales de la salud.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">✅</span>
+                        <span class="card-title-text">Requisitos Mínimos para la Implementación</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 mb-3">Define los elementos esenciales que cada establecimiento de salud debe poseer para aplicar la estrategia, tales como:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-600 space-y-1">
+                            <li>Infraestructura adecuada.</li>
+                            <li>Recursos humanos capacitado y suficientes.</li>
+                            <li>Sistemas de información integrados y actualizados.</li>
+                            <li>Procesos de atención estandarizados y flexibles.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🔄</span>
+                        <span class="card-title-text">Modelos de Cuidado y Continuidad</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 mb-3">Propone la adopción de modelos de cuidado que permitan una atención adaptada y continua, incluyendo:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-600 space-y-1">
+                            <li><strong class="text-blue-600">Estratificación de riesgo:</strong> Identificación temprana de pacientes con mayor necesidad de apoyo.</li>
+                            <li>Desarrollo de <strong class="text-blue-600">planes de cuidado consensuados:</strong> Acuerdos entre el equipo de salud y la persona/familia.</li>
+                            <li>Mecanismos de <strong class="text-blue-600">coordinación de la red:</strong> Asegurar transiciones fluidas entre niveles de atención.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🛠️</span>
+                        <span class="card-title-text">Herramientas y Recursos para la Gestión</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 mb-3">Provee instrumentos y directrices para facilitar la gestión del cuidado y la programación operativa, como:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-600 space-y-1">
+                            <li>Guías clínicas y protocolos actualizados.</li>
+                            <li>Plataformas tecnológicas para el registro y seguimiento.</li>
+                            <li>Orientaciones para la programación de agendas y prestaciones.</li>
+                            <li>Metodologías para la evaluación y mejora continua de la estrategia.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Estratificaciones de Riesgo de Población -->
+        <section id="estratificacion" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">4. Estratificación de Riesgo de Población: Identificando Necesidades y Niveles de Cuidado</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                La estratificación de riesgo de la población es una herramienta fundamental dentro de la ECICEP para optimizar la asignación de recursos y personalizar el cuidado. Consiste en clasificar a los individuos según su nivel de riesgo de desarrollar complicaciones de salud, deterioro funcional o requerir una mayor intensidad de servicios. Esto permite enfocar las intervenciones donde son más necesarias y definir el tipo de acompañamiento requerido.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🎯</span>
+                        <span class="card-title-text">Objetivo de la Estratificación</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Identificar proactivamente a las personas con mayor vulnerabilidad o complejidad de salud (por ejemplo, multimorbilidad, fragilidad, riesgo social) para ofrecerles un cuidado más intensivo y coordinado, previniendo así el deterioro y la hospitalización.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">📋</span>
+                        <span class="card-title-text">Criterios Comunes de Estratificación</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Aunque los criterios específicos pueden variar, generalmente incluyen:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-600 space-y-1">
+                            <li>Número y tipo de enfermedades crónicas.</li>
+                            <li>Grado de dependencia funcional.</li>
+                            <li>Frecuencia de hospitalizaciones o visitas a urgencias.</li>
+                            <li>Factores psicosociales y de vulnerabilidad social.</li>
+                            <li>Edad y situación socioeconómica.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-gray-800 mb-4">Niveles de Estratificación (G0, G1, G2, G3):</h4>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                La ECICEP clasifica a la población en diferentes grupos de riesgo (G0 a G3), lo que permite adaptar las intervenciones y la intensidad del cuidado. Esta clasificación se basa en la complejidad de las necesidades de salud de la persona:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-green-700">
+                        <span class="emoji">🟢</span>
+                        <span class="card-title-text">G0: Sin Riesgo Identificado (Población General Sana)</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">
+                            Personas sin condiciones crónicas diagnosticadas. El enfoque principal es la <strong>promoción de la salud</strong> a nivel poblacional y la <strong>prevención primaria</strong> de enfermedades, buscando mantener el bienestar general.
+                        </p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Objetivo Específico:</h6>
+                        <p class="text-gray-700 text-sm">Mantener el estado de salud óptimo, maximizar el bienestar general y prevenir activamente el desarrollo de enfermedades crónicas a través de estrategias de salud pública y educación masiva sobre estilos de vida saludables.</p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Atención Detallada:</h6>
+                        <p class="text-gray-700 text-sm">Acciones de salud poblacionales (campañas de vacunación, promoción de actividad física, alimentación saludable), realización del Examen de Medicina Preventiva (EMP) según corresponda por edad y género, y orientación general sobre hábitos de vida saludables y detección temprana de riesgos, fomentando la responsabilidad individual en la salud.</p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Frecuencia de Contacto:</h6>
+                        <p class="text-gray-700 text-sm">Puntual, basada en programas de prevención y promoción de la salud a nivel comunitario y en la demanda espontánea para controles preventivos, con un enfoque en la educación para la salud a gran escala.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-yellow-800">
+                        <span class="emoji">🟡</span>
+                        <span class="card-title-text">G1: Riesgo Leve (Condición Crónica Única o de Bajo Impacto)</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">
+                            Personas con 1 condición crónica o factores de riesgo controlados. El foco está en el <strong>control óptimo de la condición</strong>, la promoción de hábitos saludables y la prevención de nuevas enfermedades.
+                        </p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Objetivo Específico:</h6>
+                        <p class="text-gray-700 text-sm">Fomentar el automanejo avanzado y la autoeficacia, controlar eficazmente las condiciones crónicas existentes, prevenir la aparición de nuevas comorbilidades y evitar la progresión a un riesgo mayor a través de intervenciones educativas y de apoyo personalizadas.</p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Atención Detallada:</h6>
+                        <p class="text-gray-700 text-sm">Ingreso integral inicial con evaluación de riesgo, controles anuales o bianuales según la condición, participación en actividades comunitarias de promoción de salud y acceso a programas de prevención específicos (ej. control de peso, cesación de tabaquismo), con énfasis en la educación para la salud.</p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Frecuencia de Contacto:</h6>
+                        <p class="text-gray-700 text-sm">Baja, con énfasis en el autocuidado guiado, la educación para la salud y el uso de recursos comunitarios para el mantenimiento de hábitos saludables, permitiendo a la persona gestionar su salud de forma autónoma.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-orange-800">
+                        <span class="emoji">🟠</span>
+                        <span class="card-title-text">G2: Riesgo Moderado (Multimorbilidad Estable)</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">
+                            Personas con 2 a 4 condiciones crónicas ponderadas, con estabilidad clínica pero riesgo de descompensación. El objetivo es mantener la estabilidad, prevenir la progresión y fomentar el <strong>automanajo activo</strong>.
+                        </p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Objetivo Específico:</h6>
+                        <p class="text-gray-700 text-sm">Fomentar el automanejo avanzado y la autoeficacia, controlar eficazmente las condiciones crónicas existentes, prevenir la aparición de nuevas comorbilidades y evitar la progresión a un riesgo mayor a través de intervenciones educativas y de apoyo personalizadas.</p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Atención Detallada:</h6>
+                        <p class="text-gray-700 text-sm">Controles integrales periódicos realizados por médico y/o enfermera, apoyo educativo grupal e individual sobre sus condiciones y hábitos saludables, seguimiento a distancia (telemedicina, llamadas programadas) y derivación oportuna a especialistas o programas de apoyo si es necesario para una atención especializada y coordinada.</p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Frecuencia de Contacto:</h6>
+                        <p class="text-gray-700 text-sm">Moderada, con visitas programadas y contactos de seguimiento que se ajustan según la evolución clínica y las necesidades de apoyo en el automanejo de la persona, promoviendo su participación activa en el cuidado.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-red-800">
+                        <span class="emoji">🔴</span>
+                        <span class="card-title-text">G3: Riesgo Alto (Multimorbilidad Compleja)</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">
+                            Personas con 5 o más condiciones crónicas ponderadas, o alta complejidad social y clínica (ej. dependencia severa, enfermedades avanzadas). Requieren un <strong>cuidado intensivo, proactivo y altamente coordinado</strong>.
+                        </p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Objetivo Específico:</h6>
+                        <p class="text-gray-700 text-sm">Anticipar y reducir complicaciones agudas, evitar hospitalizaciones innecesarias, mejorar la calidad de vida y apoyar la autonomía en la medida de lo posible, enfocándose en la prevención de eventos adversos graves y la gestión de crisis.</p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Atención Detallada:</h6>
+                        <p class="text-gray-700 text-sm">Acompañamiento cercano y personalizado por un "Gestor de Casos" (enfermero/a o médico), desarrollo de planes de cuidado detallados y consensuados que incluyen metas a corto y largo plazo, coordinación estrecha con especialistas de niveles secundario y terciario, y apoyo a redes de cuidado formales e informales para una atención integral y continua, incluyendo la coordinación de visitas domiciliarias y teleconsultas.</p>
+                        <h6 class="font-semibold text-md text-gray-800 mt-4 mb-2">Frecuencia de Contacto:</h6>
+                        <p class="text-gray-700 text-sm">Muy alta, con seguimiento continuo a través de visitas domiciliarias, contactos telefónicos periódicos y consultas presenciales frecuentes, ajustándose a la complejidad y evolución de cada caso para asegurar una respuesta rápida a las necesidades cambiantes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="callout-info mt-6">
+                <p class="font-semibold">
+                    <span class="font-bold text-blue-900">Beneficio Clave:</span> La estratificación permite una gestión más eficiente de los recursos y una atención más precisa, moviendo el sistema de un enfoque reactivo a uno preventivo y proactivo, asegurando que cada persona reciba el nivel de cuidado que realmente necesita.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: El Proceso de Atención Integral Centrado en la Persona -->
+        <section id="proceso-atencion" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm0 8.625a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM15.375 12a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM8.625 12a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">5. El Proceso de Atención Integral Centrado en la Persona: Pasos Fundamentales</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                El Proceso de Atención Integral Centrado en la Persona es el corazón de la ECICEP, guiando cada interacción del equipo de salud con el individuo y su entorno. Se articula a través de los siguientes pasos secuenciales y cíclicos:
+            </p>
+
+            <div class="space-y-6">
+                <div class="process-step" onclick="toggleAccordion(this)">
+                    <div class="process-step-header-wrapper">
+                        <span class="process-step-number">1</span>
+                        <h4 class="text-xl font-semibold text-gray-800">
+                            <span class="emoji">👋</span>
+                            <span class="process-step-title-text">Contacto Inicial y Acogida</span>
+                        </h4>
+                    </div>
+                    <div class="collapsible-content">
+                        <p class="text-base text-gray-700">Primera interacción donde se establece una relación de confianza. Implica escuchar activamente las necesidades y expectativas de la persona, garantizando un ambiente de respeto y empatía. Es el punto de partida para construir el vínculo terapéutico.</p>
+                    </div>
+                </div>
+                <div class="process-step" onclick="toggleAccordion(this)">
+                    <div class="process-step-header-wrapper">
+                        <span class="process-step-number">2</span>
+                        <h4 class="text-xl font-semibold text-gray-800">
+                            <span class="emoji">📝</span>
+                            <span class="process-step-title-text">Ingreso Integral y Valoración</span>
+                        </h4>
+                    </div>
+                    <div class="collapsible-content">
+                        <p class="text-base text-gray-700">Se realiza una evaluación exhaustiva que va más allá de lo clínico. Incluye la valoración de aspectos biopsicosociales, funcionales, emocionales y del entorno familiar y social. Se utilizan herramientas de tamizaje y estratificación de riesgo para identificar las necesidades complejas y las fortalezas del individuo.</p>
+                    </div>
+                </div>
+                <div class="process-step" onclick="toggleAccordion(this)">
+                    <div class="process-step-header-wrapper">
+                        <span class="process-step-number">3</span>
+                        <h4 class="text-xl font-semibold text-gray-800">
+                            <span class="emoji">🤝</span>
+                            <span class="process-step-title-text">Elaboración del Plan de Cuidados Consensuado</span>
+                        </h4>
+                    </div>
+                    <div class="collapsible-content">
+                        <p class="text-base text-gray-700">Con base en la valoración integral, se diseña un plan de cuidados personalizado. Este plan es co-construido con la persona y su familia, estableciendo objetivos realistas y metas compartidas. Se definen las intervenciones, los responsables y los plazos, fomentando la autonomía del individuo en su proceso de salud.</p>
+                    </div>
+                </div>
+                <div class="process-step" onclick="toggleAccordion(this)">
+                    <div class="process-step-header-wrapper">
+                        <span class="process-step-number">4</span>
+                        <h4 class="text-xl font-semibold text-gray-800">
+                            <span class="emoji">📈</span>
+                            <span class="process-step-title-text">Seguimiento y Acompañamiento Continuo</span>
+                        </h4>
+                    </div>
+                    <div class="collapsible-content">
+                        <p class="text-base text-gray-700">El equipo de salud, incluyendo a los Navegadores en Red, realiza un seguimiento periódico para evaluar el progreso del plan de cuidados, ajustar las intervenciones si es necesario y brindar apoyo continuo. Se busca asegurar la adherencia, resolver barreras y mantener la motivación de la persona a lo largo de su trayectoria de salud.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Equipo de Salud Multidisciplinario y Coordinado -->
+        <section id="equipo-salud" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm0 8.625a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM15.375 12a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM8.625 12a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">6. Equipo de Salud Multidisciplinario y Coordinado</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                La implementación efectiva de la ECICEP requiere un cambio de un modelo de atención individual a uno basado en el trabajo colaborativo de equipos multidisciplinarios. Estos equipos son esenciales para abordar la complejidad de la multimorbilidad y las necesidades integrales de las personas.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">👥</span>
+                        <span class="card-title-text">Composición del Equipo</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Idealmente, un equipo multidisciplinario incluye profesionales de diversas áreas como médicos, enfermeras, psicólogos, nutricionistas, trabajadores sociales, terapeutas ocupacionales, kinesiólogos y, fundamentalmente, los Navegadores en Red. Cada uno aporta una perspectiva única para el cuidado integral.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🗣️</span>
+                        <span class="card-title-text">Coordinación y Comunicación</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">La clave del éxito radica en la comunicación fluida y la coordinación efectiva entre los miembros del equipo. Esto implica reuniones periódicas, uso compartido de información clínica y planes de cuidado consensuados, asegurando que todas las intervenciones estén alineadas con los objetivos de la persona.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="callout-info mt-6">
+                <p class="font-semibold">
+                    <span class="font-bold text-blue-900">Valor Agregado:</span> Un equipo coordinado evita la duplicidad de esfuerzos, reduce la fragmentación de la atención y proporciona una visión 360° del paciente, lo que se traduce en mejores resultados de salud.
+                </p>
+            </div>
+
+            <!-- New subsection for Detailed Professional Roles -->
+            <h4 class="text-2xl font-semibold text-gray-800 mb-4 mt-12">Roles y Funciones Detalladas por Profesional:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🩺</span>
+                        <span class="card-title-text">Médico/a</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Realiza el ingreso integral y los controles de salud periódicos, lidera el diagnóstico, tratamiento y ajuste farmacológico de las condiciones crónicas y agudas. Actúa como médico de cabecera para asegurar la continuidad del cuidado, la visión global del paciente y la coordinación con especialistas, priorizando la atención centrada en la persona.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">👩‍⚕️</span>
+                        <span class="card-title-text">Enfermero/a</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Realiza el ingreso integral y los controles de salud periódicos, lidera el diagnóstico, tratamiento y ajuste farmacológico de las condiciones crónicas y agudas. Actúa como médico de cabecera para asegurar la continuidad del cuidado, la visión global del paciente y la coordinación con especialistas, priorizando la atención centrada en la persona.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🧑‍⚕️</span>
+                        <span class="card-title-text">TENS (Técnico en Enfermería Nivel Superior)</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Apoya en el seguimiento a distancia, rescate de pacientes inasistentes, toma de signos vitales y parámetros antropométricos, realización de procedimientos básicos y es un vínculo fundamental entre la persona y el equipo de salud en el día a día, facilitando la comunicación, el acceso y el cumplimiento de indicaciones.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">💊</span>
+                        <span class="card-title-text">Químico/a Farmacéutico/a</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Optimiza la farmacoterapia, revisa interacciones medicamentosas y duplicidades, educa sobre el uso correcto de medicamentos, efectos adversos y apoya la adherencia al tratamiento, especialmente en pacientes polimedicados y con regímenes complejos, mejorando la seguridad del paciente.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🧠</span>
+                        <span class="card-title-text">Equipo Psicosocial</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Profesionales (Psicólogo/a, Trabajador/a Social) que abordan las dimensiones de salud mental, familiar y social que impactan en la salud de la persona. Ofrecen apoyo emocional, orientación en redes de apoyo, gestión de recursos sociales y facilitan la adaptación a la enfermedad crónica y sus implicaciones en la vida diaria.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">✨</span>
+                        <span class="card-title-text">Otros Profesionales</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Nutricionistas (manejo dietético y nutricional), Kinesiólogos (rehabilitación física y funcionalidad), Odontólogos (salud bucal integral), Matronas (salud sexual y reproductiva), Terapeutas Ocupacionales (autonomía funcional), entre otros. Se integran al plan de cuidados según las necesidades específicas de la persona, aportando su experticia para un abordaje integral y holístico.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🧑‍💻</span>
+                        <span class="card-title-text">Profesional Gestor</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Miembro del equipo que facilita y gestiona el cuidado de personas con multimorbilidad severa. Sus funciones incluyen facilitar atenciones integrales según el estado de salud de la persona consultante, intermediar entre la persona consultante y los otros profesionales de la salud, coordinando las atenciones y al equipo según las necesidades individuales. También desarrolla o coordina planes individuales colaborativos con énfasis en potenciar el automanejo y la participación activa, vela por la provisión y registro de los cuidados biopsicosociales de la manera más efectiva y eficiente, y maneja/monitorea la referencia y contrarreferencia (movimientos de la persona entre distintos niveles de atención).</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">📞</span>
+                        <span class="card-title-text">Técnico Gestor (TENS)</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Miembro del equipo que apoya al profesional gestor, realizando seguimiento y rescate de usuarios de alta complejidad mediante contacto telefónico o visitas domiciliarias. Monitoriza los parámetros y el cumplimiento de metas del usuario de alta complejidad en apoyo al profesional gestor. Además, pesquisa usuarios que podrían beneficiarse del programa de multimorbilidad de alta complejidad, realiza la gestión de atención del usuario de mediana complejidad (según disponibilidad del profesional gestor) y educa a los usuarios en medidas que mejoren el automanejo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Apoyo al Automanejo: Etapas del Cambio -->
+        <section id="automanejo" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm0 8.625a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM15.375 12a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0zM8.625 12a1.125 1.125 0 11-2.25 0 1.125 1.125 0 012.25 0z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">7. Apoyo al Automanejo: Fomentando la Autonomía del Paciente</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                El apoyo al automanejo es un componente esencial de la ECICEP, empoderando a las personas para que asuman un rol activo en la gestión de su propia salud y bienestar. Este proceso reconoce que el cambio de comportamiento es un viaje, y se basa en el Modelo Transteórico de Prochaska y DiClemente, que describe las siguientes etapas:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="text-lg text-blue-700">
+                        <span class="emoji">🤔</span>
+                        <span class="card-title-text">1. Pre-contemplación</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p>La persona no tiene intención de cambiar su comportamiento en un futuro cercano (generalmente 6 meses). Puede no ser consciente del problema o minimizar sus consecuencias.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="text-lg text-blue-700">
+                        <span class="emoji">🧐</span>
+                        <span class="card-title-text">2. Contemplación</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p>La persona es consciente del problema y considera cambiar en los próximos 6 meses, pero aún está indecisa. Pesa los pros y los contras del cambio.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="text-lg text-blue-700">
+                        <span class="emoji">⚙️</span>
+                        <span class="card-title-text">3. Preparación</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p>La persona tiene la intención de actuar en el futuro inmediato (próximo mes). Ha desarrollado un plan de acción y está lista para dar pequeños pasos.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="text-lg text-blue-700">
+                        <span class="emoji">🚀</span>
+                        <span class="card-title-text">4. Acción</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p>La persona ha modificado su comportamiento, experiencias o entorno para superar el problema. Esta etapa requiere un compromiso significativo de tiempo y energía.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="text-lg text-blue-700">
+                        <span class="emoji">✅</span>
+                        <span class="card-title-text">5. Mantención</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p>La persona ha sostenido el cambio por más de 6 meses y trabaja para prevenir recaídas. El objetivo es consolidar el nuevo comportamiento y evitar volver a los viejos hábitos.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="text-lg text-blue-700">
+                        <span class="emoji">🔄</span>
+                        <span class="card-title-text">6. Recaída</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p>Ocurre cuando la persona vuelve a adoptar el comportamiento problemático. No es un fracaso, sino una parte natural del proceso de cambio, y la oportunidad de aprender y reiniciar el ciclo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="callout-info mt-6">
+                <p class="font-semibold">
+                    <span class="font-bold text-blue-900">Rol del Equipo de Salud:</span> Adaptar las intervenciones y el apoyo a la etapa de cambio en la que se encuentra cada persona, fomentando la motivación y la resiliencia.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 8: Gobernanza, Gestión del Cambio y Competencias del Equipo -->
+        <section id="gobernanza" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">8. Gobernanza, Gestión del Cambio y Competencias del Equipo</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                La implementación exitosa de una estrategia tan ambiciosa como la ECICEP depende de una sólida gobernanza, una gestión proactiva del cambio y el desarrollo continuo de las competencias del equipo de salud. Estos elementos son interdependientes y cruciales para la sostenibilidad del modelo.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"> <!-- Adjusted grid for better responsiveness -->
+                <div class="card" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🏛️</span>
+                        <span class="card-title-text">Gobernanza de la Estrategia</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Se refiere a la estructura de liderazgo, los mecanismos de toma de decisiones y la asignación de responsabilidades para guiar y supervisar la implementación de la ECICEP. Implica una coordinación efectiva entre los diferentes niveles del sistema de salud (central, regional, local) para asegurar la alineación de objetivos y recursos.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">💡</span>
+                        <span class="card-title-text">Gestión del Cambio</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Es el proceso de acompañar a las organizaciones y a las personas a través de la transición de un modelo de atención a otro. Esto incluye comunicar la visión, abordar resistencias, capacitar al personal, y celebrar los avances, fomentando una cultura de adaptación y mejora continua.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🎓</span>
+                        <span class="card-title-text">Competencias del Equipo</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">El éxito de la ECICEP radica en las habilidades y conocimientos del personal de salud. Se requiere desarrollar competencias en áreas como la comunicación efectiva, la empatía, el trabajo en equipo, la gestión de casos complejos y el apoyo al automanejo, entre otras, a través de programas de formación continua.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="callout-info mt-6">
+                <p class="font-semibold">
+                    <span class="font-bold text-blue-900">Interdependencia:</span> Una gobernanza clara facilita la gestión del cambio, y ambas dependen de un equipo con las competencias adecuadas para ejecutar la estrategia de manera efectiva.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 9: Evaluación del Impacto -->
+        <section id="evaluacion" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">9. Evaluación del Impacto: Medir para Mejorar</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                La evaluación del impacto es un componente crítico de la ECICEP, asegurando que la estrategia no solo se implemente, sino que también logre los resultados deseados en la salud de la población y la eficiencia del sistema. Permite identificar éxitos, desafíos y áreas de mejora continua.
+            </p>
+            <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                <h5 class="font-bold text-xl text-blue-700">
+                    <span class="emoji">🎯</span>
+                    <span class="card-title-text">Objetivos de la Evaluación</span>
+                </h5>
+                <div class="collapsible-content">
+                    <ul class="list-disc list-inside ml-4 text-gray-600 space-y-1">
+                        <li>Medir la efectividad de las intervenciones en la mejora de la salud y calidad de vida de las personas.</li>
+                        <li>Evaluar la eficiencia en el uso de los recursos del sistema de salud.</li>
+                        <li>Identificar barreras y facilitadores en la implementación de la estrategia.</li>
+                        <li>Generar evidencia para la toma de decisiones y la adaptación de políticas.</li>
+                    </ul>
+                    <h5 class="font-bold text-xl text-blue-700 mt-4">
+                        <span class="emoji">📊</span>
+                        <span class="card-title-text">Indicadores Clave</span>
+                    </h5>
+                    <p class="text-gray-700">La evaluación se basa en una serie de indicadores que pueden incluir:</p>
+                    <ul class="list-disc list-inside ml-4 text-gray-600 space-y-1">
+                        <li>Reducción de tiempos de espera.</li>
+                        <li>Disminución de hospitalizaciones evitables o reingresos.</li>
+                        <li>Mejora en la adherencia a tratamientos y planes de cuidado.</li>
+                        <li>Satisfacción de los usuarios y del personal de salud.</li>
+                        <li>Cambios en la prevalencia y control de enfermedades crónicas.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="callout-info mt-6">
+                <p class="font-semibold">
+                    <span class="font-bold text-blue-900">Ciclo de Mejora Continua:</span> La evaluación no es un fin en sí misma, sino un proceso iterativo que alimenta la retroalimentación y la adaptación constante de la estrategia.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 10: Implementación Específica: El Rol Crucial de los Navegadores en Red -->
+        <section id="implementacion-navegadores" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M15.75 4.5a3 3 0 11.64 1.066l-1.047 1.047a3 3 0 01-4.242 0L8.03 5.46a3 3 0 01-.117-4.124A3 3 0 017.5 4.5zm-5.25 9a3 3 0 11.64 1.066l-1.047 1.047a3 3 0 01-4.242 0L2.78 10.46a3 3 0 01-.117-4.124A3 3 0 017.5 4.5zm10.5 9a3 3 0 11.64 1.066l-1.047 1.047a3 3 0 01-4.242 0L12.78 10.46a3 3 0 01-.117-4.124A3 3 0 0117.25 4.5z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">10. Implementación Específica: El Rol Crucial de los Navegadores en Red</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                Los equipos de Navegadores en Red son un hito crucial para la ECICEP, actuando como agentes de enlace entre los usuarios y los diferentes niveles del sistema de salud. Su función principal es asegurar que los usuarios reciban la atención adecuada en el momento oportuno, optimizando los tiempos de espera y eliminando barreras organizacionales. Esta sección detalla su rol, funciones y los estados de acompañamiento que gestionan para una atención continua y coordinada.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-gray-800 mb-4">Funciones Detalladas del Navegador en Red:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">❤️</span>
+                        <span class="card-title-text">Acompañamiento y Apoyo al Paciente</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Los navegadores brindan un soporte integral y personalizado. Esto incluye escuchar activamente las preocupaciones del paciente y su familia, ofrecer orientación clara sobre el sistema de salud, y proporcionar apoyo emocional para reducir la ansiedad y el estrés asociados con el proceso de atención. Son un punto de contacto constante para resolver dudas y facilitar la comprensión de diagnósticos y tratamientos.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🔗</span>
+                        <span class="card-title-text">Coordinación Inter-Nivel de Atención</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Actúan como un puente esencial entre los diferentes niveles de la red asistencial: desde la atención primaria hasta las especialidades y la hospitalización. Su labor asegura transiciones fluidas entre los servicios, evitando la fragmentación del cuidado y garantizando que la información clínica relevante se comparta de manera oportuna entre los equipos.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🗓️</span>
+                        <span class="card-title-text">Gestión Proactiva de Citas y Exámenes</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Una de sus funciones más críticas es la gestión activa y proactiva de la agenda de los pacientes. Esto implica solicitar, programar y confirmar citas médicas, exámenes de laboratorio e imagenología, y procedimientos, buscando siempre la mayor oportunidad y eficiencia. Su objetivo es minimizar los tiempos de espera y asegurar que los pacientes accedan a los servicios necesarios sin demoras innecesarias.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🔍</span>
+                        <span class="card-title-text">Seguimiento y Monitoreo de Casos Priorizados</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Los navegadores realizan un seguimiento continuo y sistemático de los pacientes, especialmente aquellos clasificados como de alto riesgo o con necesidades complejas. Monitorean activamente el cumplimiento de los planes de cuidado, evalúan los tiempos de latencia para cada prestación y aseguran que se respeten los plazos acordados, contribuyendo directamente a la reducción de las listas de espera y a la mejora de los resultados de salud.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🤝</span>
+                        <span class="card-title-text">Facilitación de la Adherencia al Tratamiento</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Ayudan a identificar y superar barreras que puedan afectar la adherencia del paciente a su plan de tratamiento (económicas, geográficas, culturales, de comprensión). Proporcionan recordatorios, coordinan el transporte si es necesario y educan al paciente sobre la importancia de seguir las indicaciones médicas.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🗂️</span>
+                        <span class="card-title-text">Recopilación y Registro de Información</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700">Mantienen un registro preciso y actualizado de la trayectoria del paciente, incluyendo citas, resultados, interacciones y cualquier incidencia relevante. Esta información es crucial para la evaluación del impacto de la estrategia y para la mejora continua de los procesos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-gray-800 mb-4 mt-12">Estados de Acompañamiento en la Gestión de Casos:</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">📞</span>
+                        <span class="card-title-text">1) Estado de Preconsulta</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">En esta etapa los usuarios son contactados según segmentación preliminar que los caracteriza por estratificación de riesgo y tiempos de espera, con el propósito de rescatar información relevante y por especialidad, asociada a su espera. En este ámbito se incluyen los usuarios estratificados G3, G2 ECICEP, tiempos máximos de espera definidos por especialidad seleccionada, patologías de riesgo definidas localmente, y aquellos atributos o estratificación adicional con los cuales cuente el establecimiento asistencial.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">📊</span>
+                        <span class="card-title-text">2) Estado de gestión de espera según caracterización de usuarios</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">En esta etapa los usuarios son contactados en grupos segmentados de acuerdo con caracterización rescatada desde su preconsulta, permitiendo iniciar planes de trabajo de tipo baja, media y alta frecuencia. Este seguimiento requiere la previa coordinación con equipos de trabajo de cada especialidad, con el fin de disponer oferta reservada para estos eventos. Es importante que los planes a realizar tengan una base estándar de trabajo, incluyendo los medios de contacto a utilizar, frecuencia, ámbitos de abordaje, y definiciones que permitan identificar que se esté realizando correctamente, sin perder de vista que las características propias del usuario pudieran sugerir adecuaciones para un acompañamiento efectivo. Es relevante señalar que navegadores en red implementarán inicialmente un modelo de contacto a través de llamados telefónicos para los universos G3 definidos, y se irán incorporando modelos más eficientes a medida que se mejoren los canales de comunicación.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">⚙️</span>
+                        <span class="card-title-text">3) Estado de Preparación para la atención</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">En esta etapa los usuarios son preparados para su primera consulta, previa coordinación de oferta disponible por especialidad. Se debe considerar la preparación de un número definidos de personas desde estrategias que proyecten inasistencias y oferta disponible por especialidad. La etapa de preparación cuenta con scripts definidos por especialidad, y que definen la respectiva coordinación de actividades críticas como: a. Evaluación de Prerrequisitos (Indicaciones definidas para derivación); b. Coordinación de la gestión de órdenes de exámenes; c. Coordinación de unidades de apoyo (toma de muestra, imagenología, ETC).</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">🗓️</span>
+                        <span class="card-title-text">4) Estado de Gestión de Citas</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Facilitar la Gestión de citas de primera consulta y control según requerimientos, hasta su contra referencia al alta. Los equipos de navegadores en red harán seguimiento de los casos priorizados, solicitarán su agenda efectiva y monitorearán las personas agendadas por especialidad. Para este evento, posterior a la priorización clínica, los listados priorizados son dispuestos para el agendamiento con equipos de agenda y cita, con la periodicidad y canales formalizados en las mesas técnicas de cada establecimiento. Navegadores en red debe llevar registro preciso y actualizado de listados priorizados, agendados y confirmados, velando por el cumplimiento de los tiempos de latencia acordados en estas tareas.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">✅</span>
+                        <span class="card-title-text">5) Estado Post Atención</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">En esta etapa navegadores en red contactará a todos los usuarios posterior a la gestión de la cita, es decir, tanto para los casos atendidos como los inasistentes. Para este evento, anterior a la definición de disponibilidad, Navegadores en Red acompañará a los usuarios aclarando dudas sobre indicaciones médicas, procedimientos solicitados, conocimientos informados, miedos, riesgos Pts, con el propósito fundamental de informar y guiar al usuario respecto de los pasos a seguir. En los casos de aquellos usuarios que no hayan asistido a la cita se dispondrá oferta consensuada que permita su reintegro o informar posibles asociaciones a este proceso.</p>
+                    </div>
+                </div>
+                <div class="card p-6 rounded-lg" onclick="toggleAccordion(this)">
+                    <h5 class="font-bold text-xl text-blue-700">
+                        <span class="emoji">⏳</span>
+                        <span class="card-title-text">6) Estado de usuarios en espera de control</span>
+                    </h5>
+                    <div class="collapsible-content">
+                        <p class="text-gray-700 text-sm">Cantidad de usuarios en gestión de su espera por Navegadores en red que se encuentran en gestión de espera para control, desagregado por especialidad, y por tipo de frecuencia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-gray-800 mb-4 mt-12">Proceso de Implementación de los Navegadores:</h4>
+            <div class="space-y-4">
+                <div class="process-step" onclick="toggleAccordion(this)">
+                    <div class="process-step-header-wrapper">
+                        <span class="process-step-number">1</span>
+                        <h4 class="text-xl font-semibold text-blue-700">
+                            <span class="emoji">🤝</span>
+                            <span class="process-step-title-text">Fase 1: Conformación de la Mesa de Trabajo:</span>
+                        </h4>
+                    </div>
+                    <div class="collapsible-content">
+                        <p class="text-base text-gray-700">Se establece un equipo multidisciplinario con actores clave de la red asistencial (clínicos, administrativos, gestores, representantes de usuarios) para definir los lineamientos, objetivos específicos y asegurar el compromiso institucional. Esta fase es crucial para la co-construcción de la estrategia y su pertinencia a las realidades locales.</p>
+                    </div>
+                </div>
+                <div class="process-step" onclick="toggleAccordion(this)">
+                    <div class="process-step-header-wrapper">
+                        <span class="process-step-number">2</span>
+                        <h4 class="text-xl font-semibold text-blue-700">
+                            <span class="emoji">🗺️</span>
+                            <span class="process-step-title-text">Fase 2: Levantamiento Inicial de Mapa de Procesos, Brechas y Oportunidades:</span>
+                        </h4>
+                    </div>
+                    <div class="collapsible-content">
+                        <p class="text-base text-gray-700">Se realiza un diagnóstico exhaustivo de los flujos de atención existentes, identificando cuellos de botella, ineficiencias, duplicidades y áreas con potencial de mejora en la continuidad del cuidado. Esto permite diseñar intervenciones específicas y optimizar la asignación de recursos para el rol de los navegadores.</p>
+                    </div>
+                </div>
+                <div class="process-step" onclick="toggleAccordion(this)">
+                    <div class="process-step-header-wrapper">
+                        <span class="process-step-number">3</span>
+                        <h4 class="text-xl font-semibold text-blue-700">
+                            <span class="emoji">🚀</span>
+                            <span class="process-step-title-text">Fase 3: Implementación de Navegadores en los Establecimientos:</span>
+                        </h4>
+                    </div>
+                    <div class="collapsible-content">
+                        <p class="text-base text-gray-700">Puesta en marcha de los equipos de navegadores en los centros de salud. Incluye la selección y capacitación especializada del personal en habilidades de comunicación, gestión de casos y uso de herramientas tecnológicas. Se asignan roles y responsabilidades claras, y se integran los navegadores en los procesos de atención diarios, asegurando su articulación con el resto del equipo de salud.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mt-6">
+                Para apoyar estas funciones, se desarrollan <strong class="text-blue-700">herramientas de contactabilidad</strong>, como formularios estandarizados y scripts de comunicación, que aseguran una interacción efectiva y un seguimiento sistemático con los pacientes. Estas herramientas son vitales para la eficiencia y la estandarización de la labor del navegador.
+            </p>
+            <div class="callout-info mt-6">
+                <p class="font-semibold">
+                    <span class="font-bold text-blue-900">Impacto del Rol:</span> Los Navegadores en Red humanizan el sistema de salud, reducen la incertidumbre del paciente y mejoran la eficiencia operativa al desburocratizar procesos y optimizar la gestión de la demanda.
+                </p>
+            </div>
+        </section>
+
+        <!-- Conclusion Section -->
+        <section id="conclusion" class="mb-16 pt-16">
+            <div class="section-header">
+                <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a.75.75 0 001.5 0V6.75a3.75 3.75 0 117.5 0v3a.75.75 0 001.5 0V6.75A5.25 5.25 0 0012 1.5zm-1.5 8.75a.75.75 0 00-1.5 0v6a.75.75 0 001.5 0v-6zM15.75 10.5a.75.75 0 00-1.5 0v6a.75.75 0 001.5 0v-6zM12 18a.75.75 0 00-1.5 0v-1.5a.75.75 0 001.5 0V18z" clip-rule="evenodd" />
+                </svg>
+                <h3 class="text-3xl sm:text-4xl font-bold text-blue-800">11. Conclusión: La Sinergia para una Salud Centrada en la Persona</h3>
+            </div>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                La integración de los documentos del Ministerio de Salud de Chile revela una estrategia de salud pública coherente y multidimensional. La <strong class="text-blue-700">ECICEP (Documento 2020)</strong> establece la visión y el fundamento conceptual. El <strong class="text-blue-700">Marco Operativo 2025</strong> traduce esa visión en directrices y procesos de gestión. La implementación de los <strong class="text-blue-700">Navegadores en Red</strong> materializa operativamente esta estrategia, ofreciendo soporte directo y humanizado.
+            </p>
+            <p class="text-lg leading-relaxed text-gray-700">
+                La incorporación de la <strong class="text-blue-700">estratificación de riesgo</strong>, el detallado <strong class="text-blue-700">Proceso de Atención Integral</strong>, el énfasis en el <strong class="text-blue-700">Equipo Multidisciplinario</strong>, el <strong class="text-blue-700">Apoyo al Automanejo</strong> con sus etapas de cambio, y una sólida <strong class="text-blue-700">Gobernanza y Gestión del Cambio</strong>, culminando con la <strong class="text-blue-700">Evaluación del Impacto</strong>, demuestran un plan de acción integral. Esta sinergia es fundamental para construir un sistema de salud más robusto, empático y eficiente, capaz de responder de manera integral a las crecientes necesidades de la población chilena, especialmente en el manejo de la multimorbilidad y las enfermedades crónicas. El enfoque centrado en la persona no es solo un ideal, sino un objetivo alcanzable a través de esta articulada estrategia.
+            </p>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="mt-16 text-center text-gray-600 text-sm">
+            <p>&copy; 2025 Ministerio de Salud de Chile. Todos los derechos reservados.</p>
+            <p class="mt-1">Informe elaborado con base en documentos oficiales del Ministerio de Salud.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Función para alternar la visibilidad del contenido colapsable
+        function toggleAccordion(element) {
+            // Encuentra el elemento de contenido colapsable dentro del elemento clicado
+            const collapsibleContent = element.querySelector('.collapsible-content');
+
+            if (collapsibleContent) {
+                // Alterna la clase 'expanded'
+                collapsibleContent.classList.toggle('expanded');
+            }
+        }
+    </script>
+</body>
+</html>
